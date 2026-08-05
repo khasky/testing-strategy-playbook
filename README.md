@@ -144,6 +144,14 @@ My mental model is simple:
 The goal is not to maximize test count.  
 The goal is to reduce uncertainty where it matters most.
 
+### Why the shape arguments never end
+
+The pyramid comes from Mike Cohn's *Succeeding with Agile* (2009), written when a browser test meant Selenium driving a real browser: slow, flaky, expensive, so put as few tests there as possible. Kent C. Dodds' "testing trophy" (2018) reweights toward integration for frontend work, where the units are small and most real bugs live in how components, routing, and data fetching meet.
+
+Both are answers to the same question — *where is a test most expensive, and where do bugs actually appear?* — asked about different stacks a decade apart. Neither is a law. When someone cites a shape, ask what their tests cost and where their bugs come from; that is the argument that actually decides the mix.
+
+Google's escape from this is worth stealing: it classifies tests by **size** — what a test is permitted to touch (small: single process, no network or filesystem; medium: local resources; large: multiple machines) — rather than by the words unit and integration. A size is enforceable and unambiguous. "Is this a unit test?" never is.
+
 ---
 
 ## Unit tests
@@ -320,6 +328,14 @@ Flaky tests are a product problem disguised as a test problem.
 
 Nothing corrodes engineering culture faster than a red pipeline everyone ignores.
 
+### The scale of it, measured
+
+Google's published figures (John Micco, ~2016–2017) put roughly **1.5% of test runs** as flaky, while **about 16% of their 4.2 million tests** had shown flakiness at some point.
+
+Those two numbers are the whole policy argument. A 1.5% per-run rate looks like background noise on a daily dashboard, which is why flakiness gets tolerated; the 16% is the same phenomenon accumulated over time, and it is what actually blocks releases. Engineers of that calibre did not write worse tests than yours — flakiness is a property of systems with concurrency, clocks, and networks, not a sign of carelessness.
+
+Which is why the response has to be structural: quarantine, ownership, a tracked rate. "Try harder" has already been tried at a scale you will not reach.
+
 ---
 
 ## Coverage, but not cargo cult coverage
@@ -354,6 +370,8 @@ A mutation tool flips conditions, deletes statements, and swaps operators in you
 - treat surviving mutants as review findings: add the missing assertion, or accept the risk explicitly.
 
 Mutation testing is the honest audit of a suite that coverage numbers flatter.
+
+The technique was described in 1978 (DeMillo, Lipton and Sayward) and sat unused for decades for one reason: mutating a program and re-running the suite once per mutant was unaffordable. Nothing conceptual changed — CPU got cheap. Worth remembering when a tool feels novel; it is often an old idea whose cost finally dropped, which also tells you where its cost still bites.
 
 ---
 
