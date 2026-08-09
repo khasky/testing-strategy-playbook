@@ -1,6 +1,6 @@
 # Testing Strategy Playbook
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE) [![Web Reactions](https://api.webreactions.app/badge/github/khasky/testing-strategy-playbook.svg)](https://webreactions.app/?utm_source=github&utm_channel=repository&utm_medium=testing-strategy-playbook)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE) [![Emojery](https://api.emojery.app/badge/github/khasky/testing-strategy-playbook.svg)](https://emojery.app/react?t=github/khasky/testing-strategy-playbook)
 
 Practical testing strategy guide for unit, integration, end-to-end, contract, and reliability-focused test design.
 
